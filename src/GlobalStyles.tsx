@@ -11,10 +11,11 @@ const GlobalStyles: React.FC = () => {
           box-sizing: border-box;
         }
 
+        html,
         body {
-          font-family: "HelveticaNeue-Light", "Helvetica Neue Light",
-            "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-          font-weight: 300;
+          font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande",
+            sans-serif;
+          font-size: 10px;
         }
       `}
     />

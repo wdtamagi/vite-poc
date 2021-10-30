@@ -12,8 +12,8 @@ import GlobalStyles from "./GlobalStyles";
 import theme from "./theme";
 import client from "./graphql/client";
 
-const Main = React.lazy(() => import("./modules/Main"));
-const Detail = React.lazy(() => import("./modules/Detail"));
+const Main = React.lazy(() => import("./modules/Main/Main"));
+const Detail = React.lazy(() => import("./modules/Detail/Detail"));
 
 const App: React.FC = () => {
   return (

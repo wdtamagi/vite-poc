@@ -5,7 +5,14 @@ export default ({ mode }) => {
   process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
 
   return defineConfig({
-    plugins: [react()],
+    plugins: [
+      react({
+        jsxImportSource: "@emotion/react",
+        babel: {
+          plugins: ["@emotion/babel-plugin"],
+        },
+      }),
+    ],
     esbuild: {
       jsxFactory: `jsx`,
       jsxInject: `import { jsx } from '@emotion/react'`,
