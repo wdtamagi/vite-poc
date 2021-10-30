@@ -1,0 +1,10 @@
+{
+  "name": "superformula-challenge",
+  "version": "1.0.0",
+  "description": "Challenge for Superformula opportunity",
+  "main": "index.js",
+  "repository": "git@github.com:wdtamagi/superformula-challenge.git",
+  "author": "Willian Dias Tamagi <will.tamagi@gmail.com>",
+  "license": "MIT",
+  "private": true
+}
