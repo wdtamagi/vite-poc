@@ -440,6 +440,11 @@ electron-to-chromium@^1.3.878:
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.885.tgz#c8cec32fbc61364127849ae00f2395a1bae7c454"
   integrity sha512-JXKFJcVWrdHa09n4CNZYfYaK6EW5aAew7/wr3L1OnsD1L+JHL+RCtd7QgIsxUbFPeTwPlvnpqNNTOLkoefmtXg==
 
+emotion-normalize@^11.0.1:
+  version "11.0.1"
+  resolved "https://registry.yarnpkg.com/emotion-normalize/-/emotion-normalize-11.0.1.tgz#266e6b93ef9b3ff972a9615d83ab0a7483ac7af9"
+  integrity sha512-68+TdnChNbELbOVtA2oOdSc9W40KPH4dKYdXgk2KfkuGu+qK7glVVO4h5Q+hoAf2JqJfTV55wPeBMPuun+3fVA==
+
 esbuild-android-arm64@0.13.11:
   version "0.13.11"
   resolved "https://registry.yarnpkg.com/esbuild-android-arm64/-/esbuild-android-arm64-0.13.11.tgz#7e5c1ac5949275201ce341e8382583e2189a9426"
