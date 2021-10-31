@@ -12,7 +12,7 @@ interface RestaurantListProps {
 
 const RestaurantList: React.FC<RestaurantListProps> = ({ items }) => {
   const {
-    color: { offBlack },
+    colors: { black },
   } = useTheme();
 
   return (
@@ -21,9 +21,8 @@ const RestaurantList: React.FC<RestaurantListProps> = ({ items }) => {
         css={css`
           font-size: 3.4rem;
           line-height: 1.2;
-          letter-spacing: 1px;
           font-weight: 400;
-          color: ${offBlack};
+          color: ${black["300"]};
         `}
       >
         All Restaurants

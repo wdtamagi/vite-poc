@@ -5,10 +5,11 @@ import RestaurantList from "./components/RestaurantList";
 
 import Wrapper from "../../components/Wrapper";
 import { useSearchQuery } from "../../graphql/generated/graphql";
+import FilterNav from "./components/FilterNav";
 
 const Main: React.FC = () => {
   const {
-    color: { offBlack, mediumGrey },
+    colors: { black, grey },
   } = useTheme();
   const { loading, error, data } = useSearchQuery({
     variables: {
@@ -31,7 +32,7 @@ const Main: React.FC = () => {
             letter-spacing: 0.964286px;
             line-height: 1.2;
             margin: 0px;
-            color: ${offBlack};
+            color: ${black["300"]};
           `}
         >
           Restaurants
@@ -43,13 +44,14 @@ const Main: React.FC = () => {
             letter-spacing: 0.916667px;
             line-height: 1.5;
             max-width: 752px;
-            color: ${mediumGrey};
+            color: ${grey["400"]};
           `}
         >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </p>
       </Wrapper>
+      <FilterNav />
       <RestaurantList items={data?.search?.business ?? []} />
     </div>
   );

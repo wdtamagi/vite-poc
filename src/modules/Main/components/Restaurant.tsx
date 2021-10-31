@@ -12,7 +12,7 @@ interface RestaurantProps {
 
 const Restaurant: React.FC<RestaurantProps> = ({ item }) => {
   const {
-    color: { black, white, darkBlue },
+    colors: { black, white, blue },
   } = useTheme();
 
   return (
@@ -41,9 +41,8 @@ const Restaurant: React.FC<RestaurantProps> = ({ item }) => {
           font-size: 2rem;
           line-height: 1.4;
           font-weight: 400;
-          letter-spacing: 1px;
           height: 100%;
-          color: ${black};
+          color: ${black["400"]};
           padding-top: 16px;
           margin: 0px;
         `}
@@ -75,12 +74,11 @@ const Restaurant: React.FC<RestaurantProps> = ({ item }) => {
         </div>
         <button
           css={css`
-            background-color: ${darkBlue};
+            background-color: ${blue};
             color: ${white};
             padding: 16px 0px;
             font-size: 1.4rem;
             line-height: 1.2;
-            letter-spacing: 1px;
             border: none;
             cursor: pointer;
 

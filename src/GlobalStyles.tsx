@@ -23,6 +23,7 @@ const GlobalStyles: React.FC = () => {
           font-family: HelveticaNeue, Helvetica, Arial, "Lucida Grande",
             sans-serif;
           font-size: 10px;
+          letter-spacing: 1px;
         }
       `}
     />

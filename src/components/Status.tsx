@@ -7,7 +7,7 @@ interface StatusProps {
 
 const Status: React.FC<StatusProps> = ({ open }) => {
   const {
-    color: { grey, red, green },
+    colors: { grey, red, green },
   } = useTheme();
 
   return (
@@ -18,7 +18,7 @@ const Status: React.FC<StatusProps> = ({ open }) => {
         font-size: 1.2rem;
         letter-spacing: 0.5px;
         line-height: 1.4;
-        color: ${grey};
+        color: ${grey["400"]};
       `}
     >
       <div

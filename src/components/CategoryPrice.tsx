@@ -8,14 +8,14 @@ interface CategoryPriceProps {
 
 const CategoryPrice: React.FC<CategoryPriceProps> = ({ category, price }) => {
   const {
-    color: { grey },
+    colors: { grey },
   } = useTheme();
 
   return (
     <span
       css={css`
         font-size: 1.2rem;
-        color: ${grey};
+        color: ${grey["400"]};
       `}
     >
       {`${category} • ${price}`}
