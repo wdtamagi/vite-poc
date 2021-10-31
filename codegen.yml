@@ -10,6 +10,8 @@ generates:
       - "typescript"
       - "typescript-operations"
       - "typescript-react-apollo"
+    config:
+      maybeValue: T | null | undefined
   ./graphql.schema.json:
     plugins:
       - "introspection"

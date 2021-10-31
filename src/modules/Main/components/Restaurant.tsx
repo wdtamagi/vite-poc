@@ -4,14 +4,15 @@ import React from "react";
 import Rating from "../../../components/Rating";
 import Status from "../../../components/Status";
 import CategoryPrice from "../../../components/CategoryPrice";
+import { Business, Maybe } from "../../../graphql/generated/graphql";
 
 interface RestaurantProps {
-  item: any;
+  item: Maybe<Business>;
 }
 
 const Restaurant: React.FC<RestaurantProps> = ({ item }) => {
   const {
-    color: { black, white, darkBlue, grey },
+    color: { black, white, darkBlue },
   } = useTheme();
 
   return (
@@ -28,7 +29,7 @@ const Restaurant: React.FC<RestaurantProps> = ({ item }) => {
         css={css`
           grid-area: image;
           height: 228px;
-          background-image: url(${item.photos?.[0]});
+          background-image: url(${item?.photos?.[0]});
           background-repeat: no-repeat;
           background-size: cover;
           background-position: 50%;
@@ -47,7 +48,7 @@ const Restaurant: React.FC<RestaurantProps> = ({ item }) => {
           margin: 0px;
         `}
       >
-        {item.name}
+        {item?.name}
       </h5>
       <div
         css={css`
@@ -57,7 +58,7 @@ const Restaurant: React.FC<RestaurantProps> = ({ item }) => {
           justify-content: flex-end;
         `}
       >
-        <Rating rating={item.rating} />
+        <Rating rating={item?.rating ?? 0} />
         <div
           css={css`
             display: flex;
@@ -67,10 +68,10 @@ const Restaurant: React.FC<RestaurantProps> = ({ item }) => {
           `}
         >
           <CategoryPrice
-            category={item.categories?.[0]?.title}
-            price={item.price}
+            category={item?.categories?.[0]?.title ?? ""}
+            price={item?.price ?? ""}
           />
-          <Status open={item.hours?.[0]?.is_open_now} />
+          <Status open={item?.hours?.[0]?.is_open_now ?? false} />
         </div>
         <button
           css={css`

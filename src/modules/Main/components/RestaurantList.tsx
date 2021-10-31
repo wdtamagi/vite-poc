@@ -1,12 +1,13 @@
-import { css, useTheme } from "@emotion/react";
 import React from "react";
+import { css, useTheme } from "@emotion/react";
 
 import Restaurant from "./Restaurant";
 
 import Wrapper from "../../../components/Wrapper";
+import { Business, Maybe } from "../../../graphql/generated/graphql";
 
 interface RestaurantListProps {
-  items: any;
+  items: Array<Maybe<Business>>;
 }
 
 const RestaurantList: React.FC<RestaurantListProps> = ({ items }) => {
@@ -34,7 +35,7 @@ const RestaurantList: React.FC<RestaurantListProps> = ({ items }) => {
           gap: 32px;
         `}
       >
-        {items.map((item, index) => (
+        {items?.map((item, index) => (
           <Restaurant key={index} item={item} />
         ))}
       </div>
