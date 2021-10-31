@@ -1,0 +1,28 @@
+query business($id: String!) {
+  business(id: $id) {
+    id
+    name
+    rating
+    review_count
+    hours {
+      is_open_now
+    }
+    price
+    categories {
+      title
+      alias
+    }
+    photos
+    location {
+      address1
+      city
+      state
+      country
+      postal_code
+    }
+    coordinates {
+      latitude
+      longitude
+    }
+  }
+}

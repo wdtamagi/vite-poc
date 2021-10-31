@@ -1,0 +1,12 @@
+query categories($alias: String, $country: String, $locale: String) {
+  categories(alias: $alias, country: $country, locale: $locale) {
+    total
+    category {
+      title
+      alias
+      parent_categories {
+        title
+      }
+    }
+  }
+}

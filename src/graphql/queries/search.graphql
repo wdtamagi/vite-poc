@@ -1,0 +1,38 @@
+query search(
+  $term: String!
+  $location: String!
+  $categories: String
+  $price: String
+  $open_now: Boolean
+) {
+  search(
+    term: $term
+    location: $location
+    categories: $categories
+    price: $price
+    open_now: $open_now
+  ) {
+    total
+    business {
+      id
+      name
+      rating
+      review_count
+      hours {
+        is_open_now
+      }
+      price
+      categories {
+        title
+        alias
+      }
+      photos
+      location {
+        address1
+        city
+        state
+        country
+      }
+    }
+  }
+}
