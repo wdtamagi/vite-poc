@@ -1,6 +1,8 @@
 import { css, useTheme } from "@emotion/react";
 import React from "react";
 
+import Rating from "../../../components/Rating";
+
 interface RestaurantProps {
   item: any;
 }
@@ -35,6 +37,7 @@ const Restaurant: React.FC<RestaurantProps> = ({ item }) => {
           letter-spacing: 1px;
           height: 100%;
           color: ${black};
+          padding-top: 16px;
           margin: 0px;
         `}
       >
@@ -48,7 +51,7 @@ const Restaurant: React.FC<RestaurantProps> = ({ item }) => {
           justify-content: flex-end;
         `}
       >
-        <div>&&&&&</div>
+        <Rating rating={1.5} />
         <div
           css={css`
             display: flex;
@@ -62,7 +65,7 @@ const Restaurant: React.FC<RestaurantProps> = ({ item }) => {
               color: ${grey};
             `}
           >
-            Thai • $$$$
+            {`Thai • $$$$`}
           </span>
           <span>OPEN NOW</span>
         </div>
@@ -71,6 +74,9 @@ const Restaurant: React.FC<RestaurantProps> = ({ item }) => {
             background-color: ${darkBlue};
             color: ${white};
             padding: 16px 0px;
+            font-size: 1.4rem;
+            line-height: 1.2;
+            letter-spacing: 1px;
           `}
         >
           LEARN MORE
