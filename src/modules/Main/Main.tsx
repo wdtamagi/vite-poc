@@ -1,13 +1,21 @@
 import React from "react";
 import { css, useTheme } from "@emotion/react";
 
-import Wrapper from "../../components/Wrapper";
 import RestaurantList from "./components/RestaurantList";
+
+import Wrapper from "../../components/Wrapper";
+import { useSearchQuery } from "../../graphql/generated/graphql";
 
 const Main: React.FC = () => {
   const {
     color: { offBlack, mediumGrey },
   } = useTheme();
+  const { loading, error, data } = useSearchQuery({
+    variables: {
+      term: "restaurant",
+      location: "las vegas",
+    },
+  });
 
   return (
     <div
@@ -42,7 +50,7 @@ const Main: React.FC = () => {
           eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </p>
       </Wrapper>
-      <RestaurantList items={[{}]} />
+      <RestaurantList items={data?.search?.business ?? []} />
     </div>
   );
 };

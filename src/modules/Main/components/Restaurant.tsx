@@ -2,6 +2,7 @@ import { css, useTheme } from "@emotion/react";
 import React from "react";
 
 import Rating from "../../../components/Rating";
+import Status from "../../../components/Status";
 
 interface RestaurantProps {
   item: any;
@@ -17,15 +18,19 @@ const Restaurant: React.FC<RestaurantProps> = ({ item }) => {
       css={css`
         display: grid;
         grid-template-areas: "image" "name" "detail";
+        grid-template-rows: 228px auto 130px;
         width: 304px;
         height: 428px;
       `}
     >
-      <img
+      <div
         css={css`
           grid-area: image;
-          width: 100%;
           height: 228px;
+          background-image: url(${item.photos?.[0]});
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: 50%;
         `}
       />
       <h5
@@ -41,7 +46,7 @@ const Restaurant: React.FC<RestaurantProps> = ({ item }) => {
           margin: 0px;
         `}
       >
-        Very Long Name Restaurants Number 1 In List
+        {item.name}
       </h5>
       <div
         css={css`
@@ -51,12 +56,13 @@ const Restaurant: React.FC<RestaurantProps> = ({ item }) => {
           justify-content: flex-end;
         `}
       >
-        <Rating rating={1.5} />
+        <Rating rating={item.rating} />
         <div
           css={css`
             display: flex;
             justify-content: space-between;
-            padding: 20px 0px;
+            align-items: center;
+            padding: 16px 0px;
           `}
         >
           <span
@@ -65,9 +71,9 @@ const Restaurant: React.FC<RestaurantProps> = ({ item }) => {
               color: ${grey};
             `}
           >
-            {`Thai • $$$$`}
+            {`${item.categories?.[0]?.title} • ${item.price}`}
           </span>
-          <span>OPEN NOW</span>
+          <Status open={item.hours?.[0]?.is_open_now} />
         </div>
         <button
           css={css`
@@ -79,6 +85,10 @@ const Restaurant: React.FC<RestaurantProps> = ({ item }) => {
             letter-spacing: 1px;
             border: none;
             cursor: pointer;
+
+            &:hover {
+              opacity: 0.9;
+            }
           `}
         >
           LEARN MORE
