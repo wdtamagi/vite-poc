@@ -3,6 +3,7 @@ import React from "react";
 
 import Rating from "../../../components/Rating";
 import Status from "../../../components/Status";
+import CategoryPrice from "../../../components/CategoryPrice";
 
 interface RestaurantProps {
   item: any;
@@ -65,14 +66,10 @@ const Restaurant: React.FC<RestaurantProps> = ({ item }) => {
             padding: 16px 0px;
           `}
         >
-          <span
-            css={css`
-              font-size: 1.2rem;
-              color: ${grey};
-            `}
-          >
-            {`${item.categories?.[0]?.title} • ${item.price}`}
-          </span>
+          <CategoryPrice
+            category={item.categories?.[0]?.title}
+            price={item.price}
+          />
           <Status open={item.hours?.[0]?.is_open_now} />
         </div>
         <button
