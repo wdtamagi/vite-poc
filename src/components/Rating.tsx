@@ -43,8 +43,8 @@ const Filled: React.FC = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M10 0.140015L12.76 7.54001H19.76L13.86 11.98L16.72 19.44L10 14.4L3.3 19.44L6.14 11.98L0.239998 7.54001H7.22L10 0.140015Z"
         fill="#002B56"
       />

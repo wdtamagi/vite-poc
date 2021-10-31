@@ -77,6 +77,8 @@ const Restaurant: React.FC<RestaurantProps> = ({ item }) => {
             font-size: 1.4rem;
             line-height: 1.2;
             letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
           `}
         >
           LEARN MORE
