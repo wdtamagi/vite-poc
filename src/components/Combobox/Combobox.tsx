@@ -43,8 +43,8 @@ const ComboBox: React.FC<ComboBoxProps> = ({
           setOpened(true);
           break;
         case "keydown":
-          event.preventDefault();
           if (event.key === "Enter" || event.key === "ArrowDown") {
+            event.preventDefault();
             setOpened(true);
           }
           break;
@@ -53,6 +53,7 @@ const ComboBox: React.FC<ComboBoxProps> = ({
     },
     [setOpened]
   );
+
   useEffect(() => {
     if (opened) {
       optionsRefs[0]?.focus();
@@ -74,22 +75,30 @@ const ComboBox: React.FC<ComboBoxProps> = ({
   }, [setOpened]);
 
   const handleComboBoxItemEvent = useCallback(
-    (event, value, index) => {
+    (event, value, index, clear = null) => {
       switch (event.type) {
         case "click":
+          if (clear != null) {
+            clear();
+            break;
+          }
           handleSelect(value);
           break;
         case "keydown":
           if (event.key === "Enter" || event.key === " ") {
+            if (clear != null) {
+              clear();
+              break;
+            }
             handleSelect(value);
           }
           if (event.key === "ArrowUp") {
             event.preventDefault();
-            optionsRefs[index - 1].focus();
+            optionsRefs[index - 1]?.focus();
           }
-          if (event.key === "ArrowDown") {
+          if (event.key === "ArrowDown" || event.key === "Tab") {
             event.preventDefault();
-            optionsRefs[index + 1].focus();
+            optionsRefs[index + 1]?.focus();
           }
           if (event.key === "Escape") {
             selectRef.current?.focus();
@@ -98,7 +107,7 @@ const ComboBox: React.FC<ComboBoxProps> = ({
         default:
       }
     },
-    [selectRef, optionsRefs]
+    [selectRef, optionsRefs, handleSelect]
   );
 
   return (

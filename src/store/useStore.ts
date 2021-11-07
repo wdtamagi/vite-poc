@@ -20,9 +20,9 @@ interface useStoreProps {
 const useStore = create<useStoreProps>((set) => ({
   ...initalValues,
   switchFilterOpen: () =>
-    set(({ filterOpen }) => {
-      filterOpen: !filterOpen;
-    }),
+    set(({ filterOpen }) => ({
+      filterOpen: !filterOpen,
+    })),
   clearFilterPrice: () => set({ filterPrice: [] }),
   clearFilterCategory: () => set({ filterCategory: [] }),
   handleSelectPrice: (value: string) =>

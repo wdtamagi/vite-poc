@@ -1,8 +1,4 @@
-import React, {
-  KeyboardEvent,
-  MouseEvent,
-  useCallback,
-} from "react";
+import React, { KeyboardEvent, MouseEvent, useCallback } from "react";
 import { css, useTheme } from "@emotion/react";
 
 import ComboboxItem from "./ComboBoxItem";
@@ -13,7 +9,8 @@ interface ComboBoxListProps {
   comboBoxItemEvent: (
     event: MouseEvent | KeyboardEvent,
     value: string,
-    index: number
+    index: number,
+    clear?: () => void
   ) => void;
   selectedOptions: Array<string>;
   options: Array<string>;
@@ -56,8 +53,8 @@ const ComboBoxList: React.FC<ComboBoxListProps> = ({
     >
       <ComboboxItem
         innerRef={setComboBoxItemRef}
-        onKeyDown={clearValues}
-        onClick={clearValues}
+        onKeyDown={(e) => comboBoxItemEvent(e, "", 0, clearValues)}
+        onClick={(e) => comboBoxItemEvent(e, "", 0, clearValues)}
         selected={selectedOptions.length === 0}
       >
         All
@@ -66,8 +63,8 @@ const ComboBoxList: React.FC<ComboBoxListProps> = ({
         <ComboboxItem
           key={index}
           innerRef={setComboBoxItemRef}
-          onKeyDown={(e) => comboBoxItemEvent(e, option, index)}
-          onClick={(e) => comboBoxItemEvent(e, option, index)}
+          onKeyDown={(e) => comboBoxItemEvent(e, option, index + 1)}
+          onClick={(e) => comboBoxItemEvent(e, option, index + 1)}
           selected={selectedOptions.includes(option)}
         >
           {option}

@@ -29,6 +29,23 @@ const FilterNav: React.FC<FilterNavProps> = () => {
   const isFilterClean =
     !filterOpen && filterPrice.length === 0 && filterCategory.length === 0;
 
+  const handleRadioChange = useCallback(
+    (event) => {
+      switch (event.type) {
+        case "click":
+          switchFilterOpen();
+          break;
+        case "keydown":
+          if (event.key === "Enter" || event.key === "ArrowDown") {
+            switchFilterOpen();
+          }
+          break;
+        default:
+      }
+    },
+    [switchFilterOpen]
+  );
+
   return (
     <div
       css={css`
@@ -69,7 +86,8 @@ const FilterNav: React.FC<FilterNavProps> = () => {
               id="filterOpen"
               name="filterOpen"
               checked={filterOpen}
-              onClick={switchFilterOpen}
+              onClick={handleRadioChange}
+              onKeyDown={handleRadioChange}
               label="Open Now"
               readOnly
             />
