@@ -30,7 +30,8 @@ const RestaurantList: React.FC<RestaurantListProps> = ({ items }) => {
       <div
         css={css`
           display: grid;
-          grid-template-columns: 1fr 1fr 1fr 1fr;
+          grid-template-columns: repeat(auto-fit, 304px);
+          justify-content: center;
           gap: 32px;
         `}
       >

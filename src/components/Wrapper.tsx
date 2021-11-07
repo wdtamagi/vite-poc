@@ -5,9 +5,8 @@ const Wrapper: React.FC = ({ children, ...restProps }) => {
   return (
     <div
       css={css`
-        max-width: 1147px;
-        width: 100%;
-        margin: 0 64px;
+        width: min(1312px, calc(100% - 128px));
+        margin: 0 auto;
       `}
     >
       {children}

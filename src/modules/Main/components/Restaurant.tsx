@@ -21,7 +21,7 @@ const Restaurant: React.FC<RestaurantProps> = ({ item }) => {
         display: grid;
         grid-template-areas: "image" "name" "detail";
         grid-template-rows: 228px auto 130px;
-        width: 304px;
+        width: 100%;
         height: 428px;
       `}
     >
