@@ -1,20 +1,23 @@
 import React from "react";
 import { css, useTheme } from "@emotion/react";
 
+import FilterNav from "./components/FilterNav";
 import RestaurantList from "./components/RestaurantList";
 
 import Wrapper from "../../components/Wrapper";
 import { useSearchQuery } from "../../graphql/generated/graphql";
-import FilterNav from "./components/FilterNav";
+import useStore from "../../store/useStore";
 
 const Main: React.FC = () => {
   const {
     colors: { black, grey },
   } = useTheme();
+  const filterCategory = useStore((s) => s.filterCategory);
   const { loading, error, data } = useSearchQuery({
     variables: {
       term: "restaurant",
       location: "las vegas",
+      categories: filterCategory.join().toLowerCase(),
     },
   });
 
