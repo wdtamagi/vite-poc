@@ -19,5 +19,8 @@ declare module "@emotion/react" {
       green: string;
       red: string;
     };
+    breakpoints: {
+      mobile: number;
+    };
   }
 }

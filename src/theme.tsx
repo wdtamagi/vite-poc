@@ -18,6 +18,9 @@ const theme: Theme = {
     green: "hsla(162, 100%, 45%, 1)",
     red: "hsla(354, 100%, 60%, 1)",
   },
+  breakpoints: {
+    mobile: 870,
+  },
 };
 
 export default theme;
