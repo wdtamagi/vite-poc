@@ -14,7 +14,7 @@ interface ComboBoxListProps {
   ) => void;
   selectedOptions: Array<string>;
   options: Array<string>;
-  clearValues: () => void;
+  clearValues?: () => void;
 }
 const ComboBoxList: React.FC<ComboBoxListProps> = ({
   closeComboBoxList,

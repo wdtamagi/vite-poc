@@ -1,6 +1,7 @@
 import React, {
   HTMLProps,
   memo,
+  ReactNode,
   useCallback,
   useEffect,
   useRef,
@@ -14,11 +15,13 @@ import ArrowDownIcon from "../ArrowDownIcon";
 
 interface ComboBoxProps extends HTMLProps<HTMLDivElement> {
   label: string;
-  selectedValues: Array<string>;
-  clearValues: () => void;
-  options: Array<string>;
-  handleSelect: (v: string) => void;
+  selectedValues?: Array<string>;
+  clearValues?: () => void;
+  options?: Array<string>;
+  handleSelect?: (v: string) => void;
   customCss?: SerializedStyles;
+  openedComponent?: ReactNode;
+  title?: string;
 }
 const ComboBox: React.FC<ComboBoxProps> = ({
   label,
@@ -27,10 +30,12 @@ const ComboBox: React.FC<ComboBoxProps> = ({
   options,
   handleSelect,
   customCss,
+  openedComponent,
+  title,
   ...restProps
 }) => {
   const {
-    colors: { blue },
+    colors: { blue, white },
   } = useTheme();
   const [opened, setOpened] = useState(false);
   const selectRef = useRef<HTMLDivElement>(null);
@@ -82,7 +87,9 @@ const ComboBox: React.FC<ComboBoxProps> = ({
             clear();
             break;
           }
-          handleSelect(value);
+          if (handleSelect != null) {
+            handleSelect(value);
+          }
           break;
         case "keydown":
           if (event.key === "Enter" || event.key === " ") {
@@ -90,7 +97,9 @@ const ComboBox: React.FC<ComboBoxProps> = ({
               clear();
               break;
             }
-            handleSelect(value);
+            if (handleSelect != null) {
+              handleSelect(value);
+            }
           }
           if (event.key === "ArrowUp") {
             event.preventDefault();
@@ -144,16 +153,31 @@ const ComboBox: React.FC<ComboBoxProps> = ({
           `}
         />
       </div>
-      {opened && (
+      {opened && openedComponent == null ? (
         <ComboBoxList
           closeComboBoxList={handleCloseComboBoxList}
           setComboBoxItemRef={setComboBoxItemRef}
           comboBoxItemEvent={handleComboBoxItemEvent}
-          selectedOptions={selectedValues}
-          options={options}
+          selectedOptions={selectedValues ?? []}
+          options={options ?? []}
           clearValues={clearValues}
         />
-      )}
+      ) : opened ? (
+        <div
+          ref={setComboBoxItemRef}
+          css={css`
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: ${white};
+            z-index: 10;
+          `}
+        >
+          {openedComponent}
+        </div>
+      ) : null}
     </div>
   );
 };

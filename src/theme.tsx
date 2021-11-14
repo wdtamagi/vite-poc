@@ -19,7 +19,7 @@ const theme: Theme = {
     red: "hsla(354, 100%, 60%, 1)",
   },
   breakpoints: {
-    mobile: 870,
+    mobile: 885,
   },
 };
 
