@@ -36,8 +36,6 @@ const Detail: React.FC = () => {
   const business = dataBusiness?.business;
   const reviews = dataReviews?.reviews;
 
-  console.log(reviews);
-
   return (
     <>
       <div
