@@ -1,5 +1,6 @@
 import { css, useTheme } from "@emotion/react";
-import React from "react";
+import React, { useCallback } from "react";
+import { useHistory } from "react-router-dom";
 
 import Rating from "../../../components/Rating";
 import Status from "../../../components/Status";
@@ -14,6 +15,11 @@ const Restaurant: React.FC<RestaurantProps> = ({ item }) => {
   const {
     colors: { black, white, blue },
   } = useTheme();
+  const history = useHistory();
+
+  const handleLearnMoreClick = useCallback(() => {
+    history.push(`/detail/${item?.id}`);
+  }, [item, history]);
 
   return (
     <div
@@ -73,6 +79,7 @@ const Restaurant: React.FC<RestaurantProps> = ({ item }) => {
           <Status open={item?.hours?.[0]?.is_open_now ?? false} />
         </div>
         <button
+          onClick={handleLearnMoreClick}
           css={css`
             background-color: ${blue};
             color: ${white};

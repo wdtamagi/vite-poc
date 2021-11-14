@@ -7,6 +7,7 @@ import RestaurantList from "./components/RestaurantList";
 import Wrapper from "../../components/Wrapper";
 import { Business, useSearchQuery } from "../../graphql/generated/graphql";
 import useStore from "../../store/useStore";
+import Text from "../../components/Text";
 
 const Main: React.FC = () => {
   const {
@@ -53,31 +54,16 @@ const Main: React.FC = () => {
       `}
     >
       <Wrapper>
-        <h1
-          css={css`
-            font-size: 5.4rem;
-            font-weight: 400;
-            letter-spacing: 0.964286px;
-            line-height: 1.2;
-            margin: 0px;
-            color: ${black["300"]};
-          `}
-        >
-          Restaurants
-        </h1>
-        <p
-          css={css`
-            font-size: 2.2rem;
-            font-weight: 400;
-            letter-spacing: 0.916667px;
-            line-height: 1.5;
+        <Text variant="title">Restaurants</Text>
+        <Text
+          variant="subTitle"
+          customCss={css`
             max-width: 752px;
-            color: ${grey["400"]};
           `}
         >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
+        </Text>
       </Wrapper>
       <FilterNav />
       <RestaurantList items={filteredData} />

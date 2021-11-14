@@ -4,9 +4,14 @@ import { css, useTheme } from "@emotion/react";
 interface CategoryPriceProps {
   category: string;
   price: string;
+  size?: "sm" | "lg";
 }
 
-const CategoryPrice: React.FC<CategoryPriceProps> = ({ category, price }) => {
+const CategoryPrice: React.FC<CategoryPriceProps> = ({
+  category,
+  price,
+  size = "sm",
+}) => {
   const {
     colors: { grey },
   } = useTheme();
@@ -14,7 +19,7 @@ const CategoryPrice: React.FC<CategoryPriceProps> = ({ category, price }) => {
   return (
     <span
       css={css`
-        font-size: 1.2rem;
+        font-size: ${size === "sm" ? "1.2" : "2.2"}rem;
         color: ${grey["400"]};
       `}
     >
