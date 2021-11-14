@@ -13,6 +13,7 @@ interface RestaurantListProps {
 const RestaurantList: React.FC<RestaurantListProps> = ({ items }) => {
   const {
     colors: { black },
+    breakpoints: { mobile },
   } = useTheme();
 
   return (
@@ -33,6 +34,10 @@ const RestaurantList: React.FC<RestaurantListProps> = ({ items }) => {
           grid-template-columns: repeat(auto-fit, 304px);
           justify-content: center;
           gap: 32px;
+
+          @media (max-width: ${mobile}px) {
+            grid-template-columns: 100%;
+          }
         `}
       >
         {items?.map((item, index) => (

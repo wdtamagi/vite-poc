@@ -6,6 +6,9 @@ import Rating from "../../../components/Rating";
 import Status from "../../../components/Status";
 import CategoryPrice from "../../../components/CategoryPrice";
 import { Business, Maybe } from "../../../graphql/generated/graphql";
+import { useMediaQuery } from "../../../hooks/useMediaquery";
+import Button from "../../../components/Button";
+import TextArrowButton from "../../../components/TextArrowButton";
 
 interface RestaurantProps {
   item: Maybe<Business>;
@@ -14,8 +17,10 @@ interface RestaurantProps {
 const Restaurant: React.FC<RestaurantProps> = ({ item }) => {
   const {
     colors: { black, white, blue },
+    breakpoints: { mobile },
   } = useTheme();
   const history = useHistory();
+  const isMobile = useMediaQuery(`(max-width: ${mobile}px)`);
 
   const handleLearnMoreClick = useCallback(() => {
     history.push(`/detail/${item?.id}`);
@@ -29,6 +34,14 @@ const Restaurant: React.FC<RestaurantProps> = ({ item }) => {
         grid-template-rows: 228px auto 130px;
         width: 100%;
         height: 428px;
+
+        @media (max-width: ${mobile}px) {
+          grid-template-areas: "image name" "image detail";
+          grid-template-columns: 116px auto;
+          grid-template-rows: auto auto;
+          height: 132px;
+          column-gap: 12px;
+        }
       `}
     >
       <div
@@ -39,6 +52,10 @@ const Restaurant: React.FC<RestaurantProps> = ({ item }) => {
           background-repeat: no-repeat;
           background-size: cover;
           background-position: 50%;
+
+          @media (max-width: ${mobile}px) {
+            height: 132px;
+          }
         `}
       />
       <h5
@@ -51,6 +68,10 @@ const Restaurant: React.FC<RestaurantProps> = ({ item }) => {
           color: ${black["400"]};
           padding-top: 16px;
           margin: 0px;
+
+          @media (max-width: ${mobile}px) {
+            padding-top: 0px;
+          }
         `}
       >
         {item?.name}
@@ -61,9 +82,14 @@ const Restaurant: React.FC<RestaurantProps> = ({ item }) => {
           display: flex;
           flex-direction: column;
           justify-content: flex-end;
+          height: fit-content;
+
+          @media (max-width: ${mobile}px) {
+            align-self: flex-end;
+          }
         `}
       >
-        <Rating rating={item?.rating ?? 0} />
+        <Rating rating={item?.rating ?? 0} size={isMobile ? "xs" : "sm"} />
         <div
           css={css`
             display: flex;
@@ -76,26 +102,18 @@ const Restaurant: React.FC<RestaurantProps> = ({ item }) => {
             category={item?.categories?.[0]?.title ?? ""}
             price={item?.price ?? ""}
           />
-          <Status open={item?.hours?.[0]?.is_open_now ?? false} />
+          <Status
+            open={item?.hours?.[0]?.is_open_now ?? false}
+            size={isMobile ? "xs" : "sm"}
+          />
         </div>
-        <button
-          onClick={handleLearnMoreClick}
-          css={css`
-            background-color: ${blue};
-            color: ${white};
-            padding: 16px 0px;
-            font-size: 1.4rem;
-            line-height: 1.2;
-            border: none;
-            cursor: pointer;
-
-            &:hover {
-              opacity: 0.9;
-            }
-          `}
-        >
-          LEARN MORE
-        </button>
+        {isMobile ? (
+          <TextArrowButton onClick={handleLearnMoreClick}>
+            Learn More
+          </TextArrowButton>
+        ) : (
+          <Button onClick={handleLearnMoreClick}>LEARN MORE</Button>
+        )}
       </div>
     </div>
   );

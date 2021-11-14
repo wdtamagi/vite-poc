@@ -13,6 +13,7 @@ const Text: React.FC<TextProps> = ({
 }) => {
   const {
     colors: { black, grey },
+    breakpoints: { mobile },
   } = useTheme();
 
   if (variant === "title") {
@@ -26,6 +27,10 @@ const Text: React.FC<TextProps> = ({
             line-height: 1.2;
             margin: 0px;
             color: ${black["300"]};
+
+            @media (max-width: ${mobile}px) {
+              font-size: 3.2rem;
+            }
           `,
           customCss,
         ]}
@@ -45,6 +50,10 @@ const Text: React.FC<TextProps> = ({
             letter-spacing: 0.916667px;
             line-height: 1.5;
             color: ${grey["400"]};
+
+            @media (max-width: ${mobile}px) {
+              font-size: 1.6rem;
+            }
           `,
           customCss,
         ]}
@@ -61,6 +70,10 @@ const Text: React.FC<TextProps> = ({
           font-size: 2rem;
           line-height: 1.4;
           color: ${black};
+
+          @media (max-width: ${mobile}px) {
+            font-size: 1.6rem;
+          }
         `,
         customCss,
       ]}

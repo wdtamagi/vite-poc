@@ -4,7 +4,7 @@ import { css, useTheme } from "@emotion/react";
 interface CategoryPriceProps {
   category: string;
   price: string;
-  size?: "sm" | "lg";
+  size?: "xs" | "sm" | "lg";
 }
 
 const CategoryPrice: React.FC<CategoryPriceProps> = ({

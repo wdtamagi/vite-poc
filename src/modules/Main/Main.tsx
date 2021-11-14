@@ -8,6 +8,7 @@ import Wrapper from "../../components/Wrapper";
 import { Business, useSearchQuery } from "../../graphql/generated/graphql";
 import useStore from "../../store/useStore";
 import Text from "../../components/Text";
+import { mainDescription, mainTitle } from "../../constants";
 
 const Main: React.FC = () => {
   const {
@@ -54,15 +55,14 @@ const Main: React.FC = () => {
       `}
     >
       <Wrapper>
-        <Text variant="title">Restaurants</Text>
+        <Text variant="title">{mainTitle}</Text>
         <Text
           variant="subTitle"
           customCss={css`
             max-width: 752px;
           `}
         >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          {mainDescription}
         </Text>
       </Wrapper>
       <FilterNav />
